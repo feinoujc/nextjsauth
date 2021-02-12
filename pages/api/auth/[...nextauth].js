@@ -50,34 +50,25 @@ const options = {
         } 
     ],
     callbacks: {
-      async signIn(...args) {
-        console.dir({args, cb: "signIn"})
+      // async signIn(...args) {
+      //   console.dir({args, cb: "signIn"})
 
-        return true
+      //   return true
+      // },
+      // async redirect(url, baseUrl) {
+      //   console.dir({url, baseUrl, cb: "redirect"})
+
+      //   return baseUrl
+      // },
+      async session(session, {accessToken}) {
+        console.dir(session)
+        console.dir(accessToken)
+        return {...session, accessToken}
       },
-      async redirect(url, baseUrl) {
-        console.dir({url, baseUrl, cb: "redirect"})
-
-        return baseUrl
-      },
-      async session(session, token) {
-        console.dir({session, cb: "session"})
-        Object.entries(token).forEach(([k, v]) => console.dir({[k]: v}))
-        if(token?.accessToken) {
-          // Add property to session, like an access_token from a provider
-          session.accessToken = token.accessToken
-        }
-        return session
-      },
-      async jwt({accessToken, ...token}, user, account, profile, isNewUser) {
-        //console.dir({accessToken})
-
-        // console.dir({token})
-        // console.dir({user})
-        console.dir({account})
-        // console.dir({profile})
-
-        return token
+      async jwt(token, user, {accessToken}, profile, isNewUser) {
+        console.dir(token)
+        console.dir(accessToken)
+        return {...token, accessToken}
       }
   }
 };
