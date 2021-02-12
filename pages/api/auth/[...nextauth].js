@@ -42,8 +42,7 @@ const options = {
                */
               name: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
               email: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
-              id: profile['http://identity.ncarb.org/claims/personid'],
-              sub: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+             
             }
           },
           
@@ -60,15 +59,14 @@ const options = {
 
       //   return baseUrl
       // },
-      async session(session, {accessToken}) {
+      async session(session, {person_id}) {
         console.dir(session)
-        console.dir(accessToken)
-        return {...session, accessToken}
+        console.dir(person_id)
+        return {...session, person_id}
       },
-      async jwt(token, user, {accessToken}, profile, isNewUser) {
+      async jwt(token, user, account, profile, isNewUser) {
         console.dir(token)
-        console.dir(accessToken)
-        return {...token, accessToken}
+        return {...token, person_id: profile['http://identity.ncarb.org/claims/personid']}
       }
   }
 };
