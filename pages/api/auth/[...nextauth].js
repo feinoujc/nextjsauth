@@ -61,12 +61,16 @@ const options = {
 
       //   return baseUrl
       // },
-      async session(session, {accessToken} = {}) {
-        return {...session, accessToken}
+      async session(session, token) {
+        console.dir(['session',{session}])
+        console.dir(['session',{token}])
+        return {...session, accessToken: token.accessToken}
       },
       async jwt(token, user, account, profile, isNewUser) {
-        console.dir(token)
-        console.dir(account)
+        console.dir(['jwt',{token}])
+        console.dir(['jwt',{account}])
+        console.dir(['jwt',{user}])
+        console.dir(['jwt',{profile}])
         if(account?.accessToken) {
           return {...token, accessToken: account.accessToken}
         }
