@@ -69,11 +69,13 @@ const options = {
         }
         return session
       },
-      async jwt(token, user, account, profile, isNewUser) {
-        token && console.dir({token})
-        user && console.dir({user})
-        account && console.dir({account})
-        profile && console.dir({profile})
+      async jwt({accessToken, ...token}, user, account, profile, isNewUser) {
+        //console.dir({accessToken})
+
+        console.dir({token})
+        console.dir({user})
+        console.dir({account})
+        console.dir({profile})
 
         return token
       }
