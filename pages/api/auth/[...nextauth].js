@@ -64,9 +64,9 @@ const options = {
         console.dir(session)
         return {...session, person_id}
       },
-      async jwt(token, user, {accessToken}, profile, isNewUser) {
+      async jwt(token, user, account, profile, isNewUser) {
         console.dir(token)
-        console.dir(accessToken) // too big for cookie
+        //console.dir(account?.accessToken) // too big for cookie
         return {...token, person_id: profile['http://identity.ncarb.org/claims/personid']}
       }
   }
