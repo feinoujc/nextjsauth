@@ -42,7 +42,8 @@ const options = {
                */
               name: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
               email: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
-             
+              id: profile['http://identity.ncarb.org/claims/personid'],
+              sub: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
             }
           },
           
@@ -61,11 +62,12 @@ const options = {
       // },
       async session(session, {person_id}) {
         console.dir(session)
-        console.dir(person_id)
+        console.dir(accessToken)
         return {...session, person_id}
       },
-      async jwt(token, user, account, profile, isNewUser) {
+      async jwt(token, user, {accessToken}, profile, isNewUser) {
         console.dir(token)
+        console.dir(accessToken) // too big for cookie
         return {...token, person_id: profile['http://identity.ncarb.org/claims/personid']}
       }
   }
