@@ -69,12 +69,14 @@ const options = {
         }
         return session
       },
-      // async jwt(token, ...args) {
-      //   console.dir({token, cb: "jwt"})
-      //   args.forEach(a => Object.entries(a).forEach(e => console.dir({ e, cb: 'jwt'})))
+      async jwt(token, user, account, profile, isNewUser) {
+        Object.entries(token).forEach(([k, v]) => console.dir({[k]: v}))
+        Object.entries(user).forEach(([k, v]) => console.dir({[k]: v}))
+        Object.entries(account).forEach(([k, v]) => console.dir({[k]: v}))
+        Object.entries(profile).forEach(([k, v]) => console.dir({[k]: v}))
 
-      //   return token
-      // }
+        return token
+      }
   }
 };
 
