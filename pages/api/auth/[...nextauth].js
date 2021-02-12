@@ -70,10 +70,10 @@ const options = {
         return session
       },
       async jwt(token, user, account, profile, isNewUser) {
-        Object.entries(token).forEach(([k, v]) => console.dir({[k]: v}))
-        Object.entries(user).forEach(([k, v]) => console.dir({[k]: v}))
-        Object.entries(account).forEach(([k, v]) => console.dir({[k]: v}))
-        Object.entries(profile).forEach(([k, v]) => console.dir({[k]: v}))
+        token && console.dir({token})
+        user && console.dir({user})
+        account && console.dir({account})
+        profile && console.dir({profile})
 
         return token
       }
