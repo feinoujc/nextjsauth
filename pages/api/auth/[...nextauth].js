@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import {} from "next-auth/client"
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
@@ -50,6 +51,12 @@ const options = {
         } 
     ],
     database: process.env.DATABASE_URL,
+    session: {
+      // Use JSON Web Tokens for session instead of database sessions.
+      // This option can be used with or without a database for users/accounts.
+      // Note: `jwt` is automatically set to `true` if no database is specified.
+      jwt: true, 
+    },
     callbacks: {
       // async signIn(...args) {
       //   console.dir({args, cb: "signIn"})
