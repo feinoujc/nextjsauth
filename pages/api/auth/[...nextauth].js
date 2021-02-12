@@ -65,7 +65,8 @@ const options = {
         return session
       },
       async jwt(token, ...args) {
-        console.dir({token, args, cb: "jwt"})
+        console.dir({token, cb: "jwt"})
+        args.forEach(a => Object.entries(a).forEach(e => console.dir({ e, cb: 'jwt'})))
 
         return token
       }
