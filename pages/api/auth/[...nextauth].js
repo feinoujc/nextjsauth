@@ -60,16 +60,21 @@ const options = {
 
         return baseUrl
       },
-      async session(session, ...args) {
-        console.dir({session, args, cb: "session"})
+      async session(session, token) {
+        console.dir({session, cb: "session"})
+        Object.entries(token).forEach(([k, v]) => console.dir({[k]: v}))
+        if(token?.accessToken) {
+          // Add property to session, like an access_token from a provider
+          session.accessToken = token.accessToken
+        }
         return session
       },
-      async jwt(token, ...args) {
-        console.dir({token, cb: "jwt"})
-        args.forEach(a => Object.entries(a).forEach(e => console.dir({ e, cb: 'jwt'})))
+      // async jwt(token, ...args) {
+      //   console.dir({token, cb: "jwt"})
+      //   args.forEach(a => Object.entries(a).forEach(e => console.dir({ e, cb: 'jwt'})))
 
-        return token
-      }
+      //   return token
+      // }
   }
 };
 
