@@ -66,8 +66,9 @@ const options = {
       },
       async jwt(token, user, account, profile, isNewUser) {
         console.dir(token)
+        console.dir(account)
         if(account?.accessToken) {
-          return {...token, accessToken: account?.accessToken}
+          return {...token, accessToken: account.accessToken}
         }
         return token;
       }
