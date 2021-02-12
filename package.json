@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "mongodb": "^3.6.4",
     "mssql": "^6.3.1",
     "next": "10.0.6",
     "next-auth": "^3.3.0",

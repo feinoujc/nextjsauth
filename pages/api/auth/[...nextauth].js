@@ -49,6 +49,7 @@ const options = {
           
         } 
     ],
+    database: process.env.DATABASE_URL,
     callbacks: {
       // async signIn(...args) {
       //   console.dir({args, cb: "signIn"})
