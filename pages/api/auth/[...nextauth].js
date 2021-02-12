@@ -61,17 +61,15 @@ const options = {
 
       //   return baseUrl
       // },
-      async session(session, {person_id} = {}) {
-        console.dir(session)
-        return {...session, person_id}
+      async session(session, {accessToken} = {}) {
+        return {...session, accessToken}
       },
       async jwt(token, user, account, profile, isNewUser) {
         console.dir(token)
-        if(profile?.['http://identity.ncarb.org/claims/personid']) {
-          return {...token, person_id: profile['http://identity.ncarb.org/claims/personid']}
+        if(account?.accessToken) {
+          return {...token, accessToken: account?.accessToken}
         }
         return token;
-        //console.dir(account?.accessToken) // too big for cookie
       }
   }
 };
