@@ -62,7 +62,6 @@ const options = {
       // },
       async session(session, {person_id}) {
         console.dir(session)
-        console.dir(accessToken)
         return {...session, person_id}
       },
       async jwt(token, user, {accessToken}, profile, isNewUser) {
