@@ -11,7 +11,7 @@ const options = {
           name: process.env.ENV_NAME,
           type: "oauth",
           version: "2.0", 
-          scope: 'openid',
+          scope: 'openid api',
           params: { grant_type: 'authorization_code' },
           accessTokenUrl: process.env.ACCESSTOKEN_URL,
           authorizationUrl: process.env.AUTHORIZATION_URL,
@@ -43,8 +43,7 @@ const options = {
                */
               name: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
               email: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'],
-              id: profile['http://identity.ncarb.org/claims/personid'],
-              sub: profile['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+              sub: profile['http://identity.ncarb.org/claims/personid'],
             }
           },
           
